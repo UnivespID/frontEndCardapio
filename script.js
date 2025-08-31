@@ -2,8 +2,6 @@
 const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 const cartBtn = document.getElementById('cart-btn');
 const cartModal = document.getElementById('cart-modal');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const checkoutBtn = document.getElementById('checkout-btn');
 const cartItemsContainer = document.getElementById('cart-items');
 const cartCount = document.getElementById('cart-count');
 const cartTotal = document.getElementById('cart-total');
@@ -11,6 +9,10 @@ const addressInput = document.getElementById('address');
 const addressWarn = document.getElementById('address-warn');
 const deliveryRadios = document.querySelectorAll('input[name="delivery-type"]');
 const addressContainer = document.getElementById('address-container');
+const checkoutBtn = document.getElementById('checkout-btn');
+const checkoutText = document.getElementById('checkout-text');
+const checkoutSpinner = document.getElementById('checkout-spinner');
+const closeModalBtn = document.getElementById('close-modal-btn');
 
 let cart = [];
 
@@ -47,7 +49,6 @@ function updateCart() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   cartCount.textContent = totalItems;
 
-  // Remover item do carrinho
   const removeBtns = cartItemsContainer.querySelectorAll('button');
   removeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -74,11 +75,10 @@ addToCartBtns.forEach(btn => {
   });
 });
 
-// Abrir/fechar modal
 cartBtn.addEventListener('click', () => cartModal.classList.remove('hidden'));
 closeModalBtn.addEventListener('click', () => cartModal.classList.add('hidden'));
 
-// Alternar entrega/retirada
+
 deliveryRadios.forEach(radio => {
   radio.addEventListener('change', () => {
     if (radio.value === 'entrega') {
@@ -89,7 +89,6 @@ deliveryRadios.forEach(radio => {
     }
   });
 });
-
 
 checkoutBtn.addEventListener('click', async () => {
   const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value;
@@ -117,6 +116,11 @@ checkoutBtn.addEventListener('click', async () => {
     address: deliveryType === 'entrega' ? addressInput.value.trim() : null
   };
 
+  checkoutBtn.disabled = true;
+  closeModalBtn.disabled = true;
+  checkoutText.textContent = "Enviando...";
+  checkoutSpinner.classList.remove('hidden');
+
   try {
     const response = await fetch('https://cardapiobackendunivesp.onrender.com/api/orders', {
       method: 'POST',
@@ -138,5 +142,11 @@ checkoutBtn.addEventListener('click', async () => {
   } catch (err) {
     console.error(err);
     alert('Erro na conexão com o servidor!');
+  } finally {
+    // Reabilitar botões + esconder spinner
+    checkoutBtn.disabled = false;
+    closeModalBtn.disabled = false;
+    checkoutText.textContent = "Finalizar pedido";
+    checkoutSpinner.classList.add('hidden');
   }
 });

@@ -203,9 +203,16 @@
       </div>
 
       <div class="flex items-center justify-between mt-5 w-full">
-        <button id="close-modal-btn" class="px-3 py-1 border rounded">Fechar</button>
-        <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
-      </div>
+  <button id="close-modal-btn" class="px-3 py-1 border rounded">Fechar</button>
+  
+  <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded flex items-center justify-center gap-2">
+    <span id="checkout-text">Finalizar pedido</span>
+    <svg id="checkout-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+    </svg>
+  </button>
+</div>
     </div>
   </div>
 
