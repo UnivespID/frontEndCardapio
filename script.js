@@ -89,26 +89,50 @@ deliveryRadios.forEach(radio => {
     }
   });
 });
-
 checkoutBtn.addEventListener('click', async () => {
   const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value;
 
   if (!deliveryType) {
-    alert('Escolha entrega ou retirada!');
+    alert('Escolha entrega, retirada ou contato!');
     return;
-  }
-
-  if (deliveryType === 'entrega' && addressInput.value.trim() === '') {
-    addressWarn.classList.remove('hidden');
-    return;
-  } else {
-    addressWarn.classList.add('hidden');
   }
 
   if (cart.length === 0) {
     alert('Adicione pelo menos um item ao carrinho');
     return;
   }
+
+  // --- Montar resumo do pedido ---
+  let message = "Olá, gostaria de fazer um pedido:%0A%0A";
+  cart.forEach(item => {
+    message += `- ${item.name} x${item.quantity} = R$ ${(item.price * item.quantity).toFixed(2)}%0A`;
+  });
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+  message += `%0ATotal: R$ ${total}%0A`;
+
+  // --- Caso seja CONTATO: abrir WhatsApp direto ---
+  if (deliveryType === 'contato') {
+    message += `%0AModo de contato: WhatsApp`;
+    window.open(`https://wa.me/5511982797430?text=${message}`, '_blank');
+    return;
+  }
+
+  // --- Caso seja ENTREGA: exigir endereço e incluir no resumo ---
+  if (deliveryType === 'entrega') {
+    if (addressInput.value.trim() === '') {
+      addressWarn.classList.remove('hidden');
+      return;
+    } else {
+      addressWarn.classList.add('hidden');
+    }
+    message += `%0AModo de entrega: Entrega%0AEndereço: ${addressInput.value.trim()}`;
+  } else {
+    // retirada
+    message += `%0AModo de entrega: Retirada no local`;
+  }
+
+  // --- Agora além de mandar pro backend, também abre no Whats ---
+  window.open(`https://wa.me/5511982797430?text=${message}`, '_blank');
 
   const orderData = {
     visitorId,
@@ -143,7 +167,6 @@ checkoutBtn.addEventListener('click', async () => {
     console.error(err);
     alert('Erro na conexão com o servidor!');
   } finally {
-    // Reabilitar botões + esconder spinner
     checkoutBtn.disabled = false;
     closeModalBtn.disabled = false;
     checkoutText.textContent = "Finalizar pedido";
