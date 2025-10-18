@@ -15,7 +15,6 @@
     integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Restaurante da Nilza"/>
   <meta property="og:image" content="https://projeto-cardapio-wine.vercel.app/assets/hamb-1.png"/>
@@ -30,11 +29,13 @@
   <title>Restaurante da Nilza</title>
 </head>
 <body>
-  
+  <!-- SKIP LINK -->
+  <a href="#main-content" class="sr-only focus:not-sr-only p-2 bg-white text-black rounded">Pular para o conteúdo</a>
+
   <!-- HEADER -->
-  <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+  <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center" role="banner" aria-label="Cabeçalho do Restaurante da Nilza">
     <div class="w-full h-full flex flex-col justify-center items-center">
-      <img 
+      <img
         src="./assets/restaurante Nilza.png"
         alt="Logo Restaurante da Nilza"
         class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
@@ -45,125 +46,129 @@
 
       <span class="text-white text-xl font-medium text-center block">Avenida Ângelo Fornazaro, Carapicuíba- SP, Número 250</span>
 
-      <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
+      <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span" aria-hidden="false">
         <span class="text-white font-medium">Seg a Sáb - 11:00 às 14:00</span>
       </div>
 
     </div>
   </header>
-  
-  <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+
+  <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6" id="menu-heading">
     Conheça nosso cardápio
   </h2>
 
-  
-  <div id="food-menu">
-    
-    <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+  <div id="food-menu" aria-labelledby="menu-heading">
+
+    <main id="main-content" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" role="main" aria-labelledby="menu-heading">
 
       
-      <div class="flex gap-2">
-  <img 
-    src="./assets/prato_strogonoff.webp"
-    alt="Prato de strogonoff com arroz, feijão e batata palha"
-    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-  />
-  <div class="flex flex-col justify-between w-full">
-    <p class="font-bold">Strogonoff de frango</p>
-    <p class="text-sm">Arroz, feijão, batata palha e um strogonoff que faz sua boca salivar.</p>
-    <div class="flex items-center justify-between mt-3">
-      <p class="font-bold text-lg">R$ 21.90</p>
-      <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Strogonoff de frango" data-price="21.90">
-        <i class="fa fa-cart-plus text-lg text-white"></i>
-      </button>
-    </div>
-  </div>
-</div>
+      <div class="flex gap-2" role="group" aria-labelledby="item-strogonoff">
+        <img
+          src="./assets/prato_strogonoff.webp"
+          alt="Prato de strogonoff com arroz, feijão e batata palha"
+          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
+        <div class="flex flex-col justify-between w-full">
+          <p class="font-bold" id="item-strogonoff">Strogonoff de frango</p>
+          <p class="text-sm">Arroz, feijão, batata palha e um strogonoff que faz sua boca salivar.</p>
+          <div class="flex items-center justify-between mt-3">
+            <p class="font-bold text-lg">R$ 21.90</p>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Strogonoff de frango" data-price="21.90"
+              aria-label="Adicionar Strogonoff de frango ao carrinho, R$ 21,90">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
-<div class="flex gap-2">
-  <img 
-    src="./assets/prato_linguica_acebolada2.jpg"
-    alt="Linguiça acebolada"
-    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-  />
-  <div class="flex flex-col justify-between w-full">
-    <p class="font-bold">Calabresa Acebolada</p>
-    <p class="text-sm">Arroz, feijão, fritas e uma calabresa acebolada ao molho shoyu.</p>
-    <div class="flex items-center justify-between mt-3">
-      <p class="font-bold text-lg">R$ 18.90</p>
-      <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Calabresa Acebolada" data-price="18.90">
-        <i class="fa fa-cart-plus text-lg text-white"></i>
-      </button>
-    </div>
-  </div>
-</div>
+      <div class="flex gap-2" role="group" aria-labelledby="item-calabresa">
+        <img
+          src="./assets/prato_linguica_acebolada2.jpg"
+          alt="Linguiça acebolada"
+          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
+        <div class="flex flex-col justify-between w-full">
+          <p class="font-bold" id="item-calabresa">Calabresa Acebolada</p>
+          <p class="text-sm">Arroz, feijão, fritas e uma calabresa acebolada ao molho shoyu.</p>
+          <div class="flex items-center justify-between mt-3">
+            <p class="font-bold text-lg">R$ 18.90</p>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Calabresa Acebolada" data-price="18.90"
+              aria-label="Adicionar Calabresa Acebolada ao carrinho, R$ 18,90">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
-<div class="flex gap-2">
-  <img 
-    src="./assets/picadinho.jpg"
-    alt="Picadinho com fritas"
-    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-  />
-  <div class="flex flex-col justify-between w-full">
-    <p class="font-bold">Picadinho com fritas</p>
-    <p class="text-sm">Arroz, feijão, fritas e um picadinho com toque caseiro incrível.</p>
-    <div class="flex items-center justify-between mt-3">
-      <p class="font-bold text-lg">R$ 23.90</p>
-      <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Picadinho com fritas" data-price="23.90">
-        <i class="fa fa-cart-plus text-lg text-white"></i>
-      </button>
-    </div>
-  </div>
-</div>
+      <div class="flex gap-2" role="group" aria-labelledby="item-picadinho">
+        <img
+          src="./assets/picadinho.jpg"
+          alt="Picadinho com fritas"
+          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
+        <div class="flex flex-col justify-between w-full">
+          <p class="font-bold" id="item-picadinho">Picadinho com fritas</p>
+          <p class="text-sm">Arroz, feijão, fritas e um picadinho com toque caseiro incrível.</p>
+          <div class="flex items-center justify-between mt-3">
+            <p class="font-bold text-lg">R$ 23.90</p>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Picadinho com fritas" data-price="23.90"
+              aria-label="Adicionar Picadinho com fritas ao carrinho, R$ 23,90">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
-<div class="flex gap-2">
-  <img 
-    src="./assets/macarrao-ao-alho-e-oleo-com-bacon-capa.jpeg"
-    alt="Macarrão ao alho e óleo"
-    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-  />
-  <div class="flex flex-col justify-between w-full">
-    <p class="font-bold">Macarrão ao alho e óleo</p>
-    <p class="text-sm">Opção vegana para aqueles que querem desfrutar de uma legítima massa saudável.</p>
-    <div class="flex items-center justify-between mt-3">
-      <p class="font-bold text-lg">R$ 17.90</p>
-      <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Macarrão ao alho e óleo" data-price="17.90">
-        <i class="fa fa-cart-plus text-lg text-white"></i>
-      </button>
-    </div>
-  </div>
-</div>
+      <div class="flex gap-2" role="group" aria-labelledby="item-macarrao">
+        <img
+          src="./assets/macarrao-ao-alho-e-oleo-com-bacon-capa.jpeg"
+          alt="Macarrão ao alho e óleo"
+          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
+        <div class="flex flex-col justify-between w-full">
+          <p class="font-bold" id="item-macarrao">Macarrão ao alho e óleo</p>
+          <p class="text-sm">Opção vegana para aqueles que querem desfrutar de uma legítima massa saudável.</p>
+          <div class="flex items-center justify-between mt-3">
+            <p class="font-bold text-lg">R$ 17.90</p>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Macarrão ao alho e óleo" data-price="17.90"
+              aria-label="Adicionar Macarrão ao alho e óleo ao carrinho, R$ 17,90">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
 
     </main>
 
     <div class="mx-auto max-w-7xl px-2 my-2">
-      <h2 class="font-bold text-3xl">Bebidas</h2>
+      <h2 class="font-bold text-3xl" id="bebidas-heading">Bebidas</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" role="list" aria-labelledby="bebidas-heading">
       <!-- BEBIDA ITEM -->
-      <div class="flex gap-2 w-full">
+      <div class="flex gap-2 w-full" role="group" aria-labelledby="item-coca">
         <img src="./assets/refri-1.png" alt="Coca-Cola lata" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
         <div class="w-full">
-          <p class="font-bold">Coca lata</p>
+          <p class="font-bold" id="item-coca">Coca lata</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 7.00</p>
-            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Coca lata" data-price="7.00">
-              <i class="fa fa-cart-plus text-lg text-white"></i>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Coca lata" data-price="7.00"
+              aria-label="Adicionar Coca lata ao carrinho, R$ 7,00">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
             </button>
           </div>
         </div>
       </div>
 
-      
-      <div class="flex gap-2 w-full">
+      <div class="flex gap-2 w-full" role="group" aria-labelledby="item-guarana">
         <img src="./assets/refri-2.png" alt="Guaraná lata" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
         <div class="w-full">
-          <p class="font-bold">Guaraná lata</p>
+          <p class="font-bold" id="item-guarana">Guaraná lata</p>
           <div class="flex items-center gap-2 justify-between mt-3">
             <p class="font-bold text-lg">R$ 6.00</p>
-            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Guaraná lata" data-price="6.00">
-              <i class="fa fa-cart-plus text-lg text-white"></i>
+            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Guaraná lata" data-price="6.00"
+              aria-label="Adicionar Guaraná lata ao carrinho, R$ 6,00">
+              <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
             </button>
           </div>
         </div>
@@ -172,16 +177,21 @@
 
   </div>
   
-  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden" id="cart-modal">
-    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-      <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
+  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden" id="cart-modal"
+    role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-describedby="cart-desc" aria-hidden="true">
+    <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]" role="document">
+      <h2 class="text-center font-bold text-2xl mb-2" id="cart-title">Meu carrinho</h2>
 
-      <div id="cart-items" class="flex justify-between mb-2 flex-col max-h-[300px] overflow-auto"></div>
+      <div id="cart-desc" class="sr-only">
+        Janela modal com itens do carrinho, total e opções de entrega. Pressione Escape para fechar.
+      </div>
+
+      <div id="cart-items" class="flex justify-between mb-2 flex-col max-h-[300px] overflow-auto" aria-live="polite"></div>
 
       <p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
 
       <p class="font-bold mt-4">Entrega:</p>
-      <div class="flex items-center gap-4 mt-2">
+      <div class="flex items-center gap-4 mt-2" role="radiogroup" aria-label="Tipo de entrega">
         <label class="flex items-center gap-1">
           <input type="radio" name="delivery-type" value="entrega" checked />
           Entrega
@@ -197,7 +207,8 @@
       </div>
 
       <div id="address-container" class="mt-2">
-        <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded my-1"/>
+        <label for="address" class="sr-only">Endereço para entrega</label>
+        <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded my-1" />
         <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
       </div>
 
@@ -207,24 +218,24 @@
       </div>
 
       <div class="flex items-center justify-between mt-5 w-full">
-  <button id="close-modal-btn" class="px-3 py-1 border rounded">Fechar</button>
-  
-  <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded flex items-center justify-center gap-2">
-    <span id="checkout-text">Finalizar pedido</span>
-    <svg id="checkout-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-    </svg>
-  </button>
-</div>
+        <button id="close-modal-btn" class="px-3 py-1 border rounded" aria-label="Fechar carrinho" aria-controls="cart-modal">Fechar</button>
+
+        <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded flex items-center justify-center gap-2" aria-label="Finalizar pedido">
+          <span id="checkout-text">Finalizar pedido</span>
+          <svg id="checkout-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- BUTTON CART FOOTER -->
-  <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
-    <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
-      (<span id="cart-count">0</span>) Veja meu carrinho
-      <i class="fa fa-cart-plus text-lg text-white"></i>
+  <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center" role="contentinfo">
+    <button class="flex items-center gap-2 text-white font-bold" id="cart-btn" aria-controls="cart-modal" aria-expanded="false">
+      (<span id="cart-count" aria-live="polite">0</span>) Veja meu carrinho
+      <i class="fa fa-cart-plus text-lg text-white" aria-hidden="true"></i>
     </button>
   </footer>
 
